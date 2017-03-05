@@ -1,0 +1,120 @@
+
+/* Container */
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  width: 90%;
+  max-width: 1300px;
+  margin: 10px auto 0;
+  min-height: calc(100vh - 300px);
+  padding: 40px 40px 0;
+}
+
+/* Column */
+.column {
+  -ms-flex-preferred-size: 33.33333%;
+  flex-basis: 33.33333%;
+  width: 33.33333%;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+@media (max-width: 900px) {
+  .column {
+    -ms-flex-preferred-size: 50%;
+    flex-basis: 50%;
+    width: 50%;
+  }
+}
+@media (max-width: 600px) {
+  .column {
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    width: 100%;
+  }
+}
+
+/* Article (Component) */
+
+.article {
+  background: #FFF;
+  margin: 0 0 20px;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+}
+
+.article__description,
+.article__header {
+  padding: 20px;
+}
+
+.article:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.article:active {
+  box-shadow: none;
+}
+
+.article--expanded .article__header {
+  font-weight: 500;
+  background-color: rgba(255, 204, 110,0.5);
+  transition: all .2s;
+}
+
+.article__category {
+  display: inline-block;
+  padding: 8px 10px;
+  margin: 0 0 10px;
+  color: #FFF;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .075rem;
+  text-transform: uppercase;
+}
+
+.article__description {
+  color: #666;
+  line-height: 1.5rem;
+  font-size: .875rem;
+  /*collapse*/
+  padding: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.article--expanded .article__description {
+  height: auto;
+  padding: 15px 15px 30px;
+  opacity: 1;
+  border-top: solid 1px #ccc;
+}
+
+.article--expanded {
+  position: fixed;
+  overflow-y: scroll;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 525px;
+  box-shadow: -1px 0 20px #555;
+  text-align: left;
+}
+
+.article__title {
+  margin: 0 0 10px;
+  color: #444;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.75rem;
+}

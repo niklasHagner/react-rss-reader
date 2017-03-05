@@ -1,0 +1,42 @@
+.app {
+  text-align: center;
+}
+
+.app-logo {
+  animation: app-logo-spin infinite 60s linear;
+  height: 60px;
+  position: absolute;
+  top: 5px;
+  left: 15px;
+}
+
+.app-header {
+  background-color: rgba(119,136,153, 0.5);
+  color: white;
+  height: 25px;
+  padding: 20px;
+}
+
+.app-header h2 {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 90px;
+  font-family: 'Bitter', sans-serif;
+  font-size: 30px;
+  text-shadow: 1px 0 1px #172744;
+  margin-top: 6px;
+}
+
+.app-intro {
+  font-size: large;
+}
+@keyframes app-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

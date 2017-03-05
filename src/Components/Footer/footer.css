@@ -1,0 +1,12 @@
+.footer {
+  background-color: rgba(119,136,153, 0.4);
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  height: 150px;
+}
+
+li {
+  list-style: none;
+}
