@@ -12,4 +12,7 @@ function toArr(obj) {
     }
     return arr;
 }
-export { toArr, toKeys };
+
+export const test = () => {
+
+}
