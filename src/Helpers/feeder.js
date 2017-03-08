@@ -1,8 +1,9 @@
 import $ from 'jquery';
 import { toArr, toKeys } from './keymap.js';
 
+var sources = [];
+
 function setUrl(rssUrl) {
-    console.log(rssUrl);
     rssUrl = encodeURIComponent(rssUrl);
     return `https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}&_=1488646585321`;
 }
@@ -20,16 +21,17 @@ function getListOfUrls() {
     });
     return urls;
 }
-var getFeed = function (reactRoot) {
+var getFeeds = function (reactRoot) {
     var urls = getListOfUrls();
-
     var promiseArr = [];
     urls.forEach((x, index) => {
-        var promise = getProjectDetails(x.url, x.color);
+        var promise = getSingleFeed(x.url, x.color);
         promiseArr.push(promise);
     });
     Promise.all(promiseArr).then((values) => {
-        var feeds = values.map((v) => { return toArr(v.articles); });
+        var feeds = values.map((x) => {
+            return x.articles;
+        });
         var aggregate = [];
         feeds.forEach((item, ix) => {
             aggregate = aggregate.concat(item);
@@ -37,7 +39,8 @@ var getFeed = function (reactRoot) {
         aggregate = aggregate.sort(function (a, b) {
             return b.pubDate - a.pubDate;
         });
-        var reactResult = { articles: toArr(aggregate) };
+        var reactResult = { articles: aggregate };
+        console.log("feeds", aggregate);
         reactRoot.setState(reactResult);
     }).catch(function (e) {
         console.error(e);
@@ -45,8 +48,7 @@ var getFeed = function (reactRoot) {
 
 };
 
-function getProjectDetails(url, color) {
-
+function getSingleFeed(url, color) {
     return new Promise(function (fulfill, reject) {
         $.get(url, (result) => {
             if (result.error) {
@@ -64,12 +66,8 @@ function getProjectDetails(url, color) {
                 x.thumbNail = 'http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/sign-check-icon.png';
                 return x;
             }).filter((x) => { return x.title.indexOf("sponsor") < 0; })
-            var keys = {};
-            articles.forEach((x, index) => {
-                keys['article-' + index] = x;
-            });
             var resultObject = {
-                articles: keys
+                articles: articles
             };
             fulfill(resultObject);
         });
@@ -79,8 +77,8 @@ function getProjectDetails(url, color) {
 
 var getTestData = function () {
     return {
-        articles: {
-            'article-0': {
+        articles: [
+            {
                 "color": "FEC006",
                 "title": "Snow in Turkey Brings Travel Woes",
                 "thumbnail": "",
@@ -88,7 +86,7 @@ var getTestData = function () {
                 "description": "Heavy snowstorm in Turkey creates havoc as hundreds of villages left without power, and hundreds of roads closed",
                 "date": new Date()
             },
-            'article-1': {
+            {
                 "color": "2196F3",
                 "title": "Landslide Leaving Thousands Homeless",
                 "thumbnail": "",
@@ -96,7 +94,7 @@ var getTestData = function () {
                 "description": "An aburt landslide in the Silcon Valley has left thousands homeless and on the streets.",
                 "date": new Date()
             },
-            'article-2': {
+            {
                 "color": "FE5621",
                 "title": "Hail the size of baseballs in New York",
                 "thumbnail": "",
@@ -104,7 +102,7 @@ var getTestData = function () {
                 "description": "A rare and unexpected event occurred today as hail the size of snowball hits New York citizens.",
                 "date": new Date()
             },
-            'article-3': {
+            {
                 "color": "673AB7",
                 "title": "Earthquake destorying San Fransisco",
                 "thumbnail": "",
@@ -112,8 +110,8 @@ var getTestData = function () {
                 "description": "A massive earthquake just hit San Fransisco leaving behind a giant crater.",
                 "date": new Date()
             }
-        }
+        ]
     }
 };
 
-export { getFeed, getTestData, getListOfUrls };
+export { getFeeds, getTestData, getListOfUrls };

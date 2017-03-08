@@ -2,15 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 //resources
-import logo1 from './logo.svg';
 import './app.css';
 
 //components
 import Menu from './Components/Menu/Menu.js';
 import Footer from './Components/Footer/Footer.js';
+import FeedSource from './Components/Article/Sources';
 import Article from './Components/Article/Article';
-import { getFeed, getTestData } from './Helpers/feeder.js';
-import $ from 'jquery';
+import { getFeeds, getTestData, getListOfUrls } from './Helpers/feeder.js';
 import { toArr, toKeys } from './Helpers/keymap.js';
 
 var App = React.createClass({
@@ -18,37 +17,49 @@ var App = React.createClass({
     return getTestData(this);
   },
   componentDidMount: function () {
-    getFeed(this);
+    getFeeds(this);
   },
-  renderArticle: function (key) {
-    var articles = toArr(this.state.articles);
-    var len = Object.keys(articles).length;
-    var chunkSize = Math.round(len / 3);
-    var column1Articles = articles.slice(0, chunkSize);
-    var column2Articles = articles.slice(chunkSize, chunkSize);
-    var column3Articles = articles.slice(chunkSize * 2, len - 1);
-
-    column1Articles = toKeys(column1Articles);
-    console.log(column1Articles, this.state.articles);
-
+  sort: function (sortMethod) {
+    var sorted = this.state.articles;
+    if (sortMethod === 'date')
+      sorted = sorted.sort(function (a, b) {
+        return b.pubDate - a.pubDate;
+      });
+    else if (sortMethod === 'title')
+      sorted = sorted.sort(function (a, b) {
+        return b.title - a.title;
+      });
+    this.setState({ articles: sorted });
+  },
+  renderArticle: function (item, key) {
     return (
       <div className="column">
-        <Article key={key} index={key} details={this.state.articles[key]} />
+        <Article key={`row_${key}`} details={item} />
       </div>
     )
   },
   render: function () {
+    var sources = getListOfUrls();
     return (
       <div className="app">
         <div className="app-header">
-          <menu id="menu"></menu>
+          <menu id="menu">
+          </menu>
+
+          <div className="sources">
+            {sources.map((item, index) =>
+              <FeedSource key={`source-${index}`} source={item} />
+            )}
+          </div>
 
           <img src={'http://icons.iconarchive.com/icons/graphicloads/100-flat/256/rss-icon.png'} className="app-logo" alt="logo" />
           <h2>RSS <span>Reader</span></h2>
         </div>
 
         <section className="container">
-          {Object.keys(this.state.articles).map(this.renderArticle)}
+          {this.state.articles.map((item, index) =>
+            this.renderArticle(item, index)
+          )}
         </section>
 
         <section id="footer"></section>
