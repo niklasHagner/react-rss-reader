@@ -20,8 +20,8 @@ var Menu = React.createClass({
 
         return (
             <menu className="menu" style={menuCss}>
-                <nav className="menu__item menu__item--toggle-style" style={menuItemCss}>Edit</nav>
-                <nav className="menu__item menu__item--log" style={menuItemCss}>Add Feed</nav>
+                <nav className="menu__item menu__item--toggle-style" style={menuItemCss}> 🖉 Edit</nav>
+                <nav className="menu__item menu__item--log" style={menuItemCss}> ↕ Sort</nav>
             </menu>
         )
     }
