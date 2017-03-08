@@ -1,5 +1,5 @@
 import React from 'react';
-import './cards.css';
+import './articles.css';
 //import classNames from 'classnames';
 var classNames = require('classnames');
 

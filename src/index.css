@@ -7,7 +7,7 @@ body {
   color: #242424;
   background: lightblue url("https://raw.githubusercontent.com/hudsonmarinho/header-and-footer-parallax-effect/master/assets/images/bg-header.jpg") no-repeat 100% 100%;
   background-attachment: fixed;
-
+  background-size: cover;
   width: 100vw;
   height: 100vh;
   overflow-x: hidden;
