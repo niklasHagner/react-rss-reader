@@ -7,19 +7,21 @@ function setUrl(rssUrl) {
     return `https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}&_=1488646585321`;
 }
 function getListOfUrls() {
-    return [
+    var urls = [
         { url: 'http://feeds.feedburner.com/alistapart/main', color: 'tan' },
         { url: 'https://www.smashingmagazine.com/feed/', color: '#e95c33' },
         { url: 'http://feeds.feedburner.com/CssTricks', color: 'rgb(255, 152, 0)' },
         { url: 'http://feeds2.feedburner.com/onextrapixel', color: 'lightblue' },
         { url: 'http://feeds.feedburner.com/Devlounge', color: 'dodgerblue' },
+        { url: 'http://dn.se/rss', color: 'rgb(244, 0, 14)' }
     ];
-}
-var getFeed = function (reactRoot) {
-    var urls = getListOfUrls();
     urls.forEach((item) => {
         item.url = setUrl(item.url);
     });
+    return urls;
+}
+var getFeed = function (reactRoot) {
+    var urls = getListOfUrls();
 
     var promiseArr = [];
     urls.forEach((x, index) => {
@@ -114,4 +116,4 @@ var getTestData = function () {
     }
 };
 
-export { getFeed, getTestData };
+export { getFeed, getTestData, getListOfUrls };
