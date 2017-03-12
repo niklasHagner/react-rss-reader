@@ -14,7 +14,16 @@ function getListOfUrls() {
         { url: 'http://feeds.feedburner.com/CssTricks', color: 'rgb(255, 152, 0)' },
         { url: 'http://feeds2.feedburner.com/onextrapixel', color: 'lightblue' },
         { url: 'http://feeds.feedburner.com/Devlounge', color: 'dodgerblue' },
-        { url: 'http://dn.se/rss', color: 'rgb(244, 0, 14)' }
+        { url: 'http://dn.se/rss', color: 'rgb(244, 0, 14)' },
+        { url: 'http://javascriptweekly.com/rss/14j0bm2k', color: 'mediumseagreen' },
+        { url: 'https://hacks.mozilla.org/feed/', color: 'orangered' },
+        { url: 'http://blog.chromium.org/feeds/posts/default', color: 'lightgreen' },
+        { url: 'http://feeds.feedburner.com/456bereastreet', color: 'violet' },
+        { url: 'http://www.quirksmode.org/blog/index.xml', color: 'darkgray' },
+        { url: 'http://feeds.feedburner.com/FunctioningForm', color: 'pink' },
+        { url: 'http://feeds.feedburner.com/FunctioningForm', color: 'peachpuff' },
+
+
     ];
     urls.forEach((item) => {
         item.url = setUrl(item.url);
@@ -40,7 +49,6 @@ var getFeeds = function (reactRoot) {
             return b.pubDate - a.pubDate;
         });
         var reactResult = { articles: aggregate };
-        console.log("feeds", aggregate);
         reactRoot.setState(reactResult);
     }).catch(function (e) {
         console.error(e);
@@ -55,7 +63,6 @@ function getSingleFeed(url, color) {
                 console.error("Feed error");
                 return;
             }
-            console.log(result.feed);
             var meta = result.feed;
             meta.title = meta.title.split(" ").splice(0, 3).join(" ");
             var articles = result.items;

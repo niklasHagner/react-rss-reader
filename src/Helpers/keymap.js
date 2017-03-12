@@ -13,6 +13,6 @@ function toArr(obj) {
     return arr;
 }
 
-export const test = () => {
+export const helper = () => {
 
 }

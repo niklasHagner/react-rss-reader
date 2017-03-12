@@ -11,6 +11,7 @@ import FeedSource from './Components/Article/Sources';
 import Article from './Components/Article/Article';
 import { getFeeds, getTestData, getListOfUrls } from './Helpers/feeder.js';
 import { toArr, toKeys } from './Helpers/keymap.js';
+import { chunkify } from './Helpers/arrayhelper.js';
 
 var App = React.createClass({
   getInitialState: function () {
@@ -32,35 +33,57 @@ var App = React.createClass({
     this.setState({ articles: sorted });
   },
   renderArticle: function (item, key) {
+    if (key === 1)
+      console.log(item);
     return (
-      <div className="column">
-        <Article key={`row_${key}`} details={item} />
-      </div>
+      <Article key={`row_${key}`} details={item} />
+    )
+  },
+  renderColumnWithArticles: function (articles) {
+
+    return articles.map((item, index) =>
+      <section className="column">
+        t<Article key={`row_${index}`} details={item} />
+      </section>
     )
   },
   render: function () {
     var sources = getListOfUrls();
+    var widthPercentage = Math.round(100 / sources.length);
+    var articleChunks = chunkify(this.state.articles, 3, true);
     return (
       <div className="app">
-        <div className="app-header">
+        <header className="app-header">
           <menu id="menu">
           </menu>
 
           <div className="sources">
             {sources.map((item, index) =>
-              <FeedSource key={`source-${index}`} source={item} />
+              <FeedSource key={`source-${index}`} source={item} widthPercentage={widthPercentage} />
             )}
           </div>
 
           <img src={'http://icons.iconarchive.com/icons/graphicloads/100-flat/256/rss-icon.png'} className="app-logo" alt="logo" />
           <h2>RSS <span>Reader</span></h2>
-        </div>
+        </header>
 
-        <section className="container">
-          {this.state.articles.map((item, index) =>
-            this.renderArticle(item, index)
-          )}
-        </section>
+        <div className="container">
+          <section className="column">
+            {articleChunks[0].map((item, index) =>
+              this.renderArticle(item, index)
+            )}
+          </section>
+          <section className="column">
+            {articleChunks[1].map((item, index) =>
+              this.renderArticle(item, index)
+            )}
+          </section>
+          <section className="column">
+            {articleChunks[2].map((item, index) =>
+              this.renderArticle(item, index)
+            )}
+          </section>
+        </div>
 
         <section id="footer"></section>
 

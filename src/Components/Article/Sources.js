@@ -16,7 +16,8 @@ var FeedSource = React.createClass({
     render: function (item, key) {
         var source = this.props.source;
         var styles = {
-            backgroundColor: source.color
+            backgroundColor: source.color,
+            width: this.props.widthPercentage + '%'
         };
         return (
             <div className={'feed-source'} onClick={this.sort} style={styles}>
