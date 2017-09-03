@@ -1,3 +1,11 @@
+/*reset*/
+ul, menu, nav {
+  padding: 0;
+  margin: 0;
+}
+
+/*layout*/
+
 .app {
   text-align: center;
 }
@@ -11,13 +19,16 @@
 }
 
 .app-header {
-  background-color: rgba(119,136,153, 0.5);
+  background-color: rgba(119, 136, 153, 0.5);
   color: white;
   height: 50px;
+  margin-top: -3px;
 }
-.app-header * {
+
+
+/*.app-header * {
   padding: 10px 30px;
-}
+}*/
 
 .app-header h2 {
   display: inline-block;
@@ -33,11 +44,11 @@
 .app-intro {
   font-size: large;
 }
+
 @keyframes app-logo-spin {
   from {
     transform: rotate(0deg);
   }
-
   to {
     transform: rotate(360deg);
   }

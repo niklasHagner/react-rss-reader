@@ -22,7 +22,9 @@ function getListOfUrls() {
         { url: 'http://www.quirksmode.org/blog/index.xml', color: 'darkgray' },
         { url: 'http://feeds.feedburner.com/FunctioningForm', color: 'pink' },
         { url: 'http://feeds.feedburner.com/FunctioningForm', color: 'peachpuff' },
-
+        { url: 'https://code-cartoons.com/feed', color: 'blue' },
+        { url: 'https://toddmotto.com/feed.xml', color: 'purple' },
+        { url: 'https://feeds.feedburner.com/codinghorror', color: '#555' },
 
     ];
     urls.forEach((item) => {

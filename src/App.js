@@ -43,7 +43,7 @@ var App = React.createClass({
 
     return articles.map((item, index) =>
       <section className="column">
-        t<Article key={`row_${index}`} details={item} />
+        <Article key={`row_${index}`} details={item} />
       </section>
     )
   },
@@ -68,17 +68,17 @@ var App = React.createClass({
         </header>
 
         <div className="container">
-          <section className="column">
+          <section className="column col-1">
             {articleChunks[0].map((item, index) =>
               this.renderArticle(item, index)
             )}
           </section>
-          <section className="column">
+          <section className="column col-2">
             {articleChunks[1].map((item, index) =>
               this.renderArticle(item, index)
             )}
           </section>
-          <section className="column">
+          <section className="column col-3">
             {articleChunks[2].map((item, index) =>
               this.renderArticle(item, index)
             )}

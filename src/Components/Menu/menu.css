@@ -1,24 +1,27 @@
 .menu {
   position: absolute;
-  top: 0;
+  top: 21px;
   right: 15px;
 }
 
 .menu__item {
-  background-color: rgba(100, 100, 100, 0.5);
+  background-color: rgba(51, 50, 103, 0.5);
   min-width: 5px;
   max-width: 100px;
-  margin: 10px 5px;
-  padding: 5px;
+  margin: -2px 5px;
+  padding: 4px 13px;
   font-family: Helvetica, sans-serif;
   display: inline-block;
+  line-height: 1;
+  border-radius: 50px;
 }
 
 .menu__item:hover {
   cursor: pointer;
-  background-color: rgba(200,100,200,0.5);
-};
+  background-color: rgba(200, 100, 200, 0.5);
+}
 
+;
 .sources {
   z-index: 0;
   top: 0;
