@@ -1,7 +1,4 @@
 import $ from 'jquery';
-import { toArr, toKeys } from './keymap.js';
-
-var sources = [];
 
 function setUrl(rssUrl) {
     rssUrl = encodeURIComponent(rssUrl);
@@ -33,6 +30,10 @@ function getListOfUrls() {
     return urls;
 }
 var getFeeds = function (reactRoot) {
+    var storedFeeds = localStorage.getItem('react-rss-feeds');
+
+    if (useStoredData(reactRoot, storedFeeds)) return;
+
     var urls = getListOfUrls();
     var promiseArr = [];
     urls.forEach((x, index) => {
@@ -51,12 +52,25 @@ var getFeeds = function (reactRoot) {
             return b.pubDate - a.pubDate;
         });
         var reactResult = { articles: aggregate };
+        localStorage.setItem('react-rss-feeds', JSON.stringify(reactResult));
         reactRoot.setState(reactResult);
     }).catch(function (e) {
         console.error(e);
     });
 
 };
+
+function useStoredData(reactRoot, storedFeeds) {
+    if (!storedFeeds) return false;
+
+    var storedReactResult = JSON.parse(storedFeeds);
+    var ONE_HOUR = 60 * 60 * 1000;
+    if (((new Date()) - storedReactResult.saveDate) < ONE_HOUR) {
+        reactRoot.setState(storedReactResult);
+        return true;
+    }
+    return false;
+}
 
 function getSingleFeed(url, color) {
     return new Promise(function (fulfill, reject) {
@@ -88,37 +102,61 @@ var getTestData = function () {
     return {
         articles: [
             {
-                "color": "FEC006",
-                "title": "Snow in Turkey Brings Travel Woes",
+                "color": "673AB7",
+                "title": "Loading",
                 "thumbnail": "",
                 "category": "News",
-                "description": "Heavy snowstorm in Turkey creates havoc as hundreds of villages left without power, and hundreds of roads closed",
-                "date": new Date()
-            },
-            {
-                "color": "2196F3",
-                "title": "Landslide Leaving Thousands Homeless",
-                "thumbnail": "",
-                "category": "News",
-                "description": "An aburt landslide in the Silcon Valley has left thousands homeless and on the streets.",
-                "date": new Date()
-            },
-            {
-                "color": "FE5621",
-                "title": "Hail the size of baseballs in New York",
-                "thumbnail": "",
-                "category": "News",
-                "description": "A rare and unexpected event occurred today as hail the size of snowball hits New York citizens.",
+                "description": "",
                 "date": new Date()
             },
             {
                 "color": "673AB7",
-                "title": "Earthquake destorying San Fransisco",
+                "title": "Loading",
                 "thumbnail": "",
                 "category": "News",
-                "description": "A massive earthquake just hit San Fransisco leaving behind a giant crater.",
+                "description": "",
+                "date": new Date()
+            },
+            {
+                "color": "673AB7",
+                "title": "Loading",
+                "thumbnail": "",
+                "category": "News",
+                "description": "",
                 "date": new Date()
             }
+            // {
+            //     "color": "FEC006",
+            //     "title": "Snow in Turkey Brings Travel Woes",
+            //     "thumbnail": "",
+            //     "category": "News",
+            //     "description": "Heavy snowstorm in Turkey creates havoc as hundreds of villages left without power, and hundreds of roads closed",
+            //     "date": new Date()
+            // },
+            // {
+            //     "color": "2196F3",
+            //     "title": "Landslide Leaving Thousands Homeless",
+            //     "thumbnail": "",
+            //     "category": "News",
+            //     "description": "An aburt landslide in the Silcon Valley has left thousands homeless and on the streets.",
+            //     "date": new Date()
+            // },
+            // {
+            //     "color": "FE5621",
+            //     "title": "Hail the size of baseballs in New York",
+            //     "thumbnail": "",
+            //     "category": "News",
+            //     "description": "A rare and unexpected event occurred today as hail the size of snowball hits New York citizens.",
+            //     "date": new Date()
+            // },
+            // {
+            //     "color": "673AB7",
+            //     "title": "Earthquake destorying San Fransisco",
+            //     "thumbnail": "",
+            //     "category": "News",
+            //     "description": "A massive earthquake just hit San Fransisco leaving behind a giant crater.",
+            //     "date": new Date()
+            // }
         ]
     }
 };
