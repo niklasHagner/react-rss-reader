@@ -10,7 +10,6 @@ import Footer from './Components/Footer/Footer.js';
 import FeedSource from './Components/Article/Sources';
 import Article from './Components/Article/Article';
 import { getFeeds, getTestData, getListOfUrls } from './Helpers/feeder.js';
-import { toArr, toKeys } from './Helpers/keymap.js';
 import { chunkify } from './Helpers/arrayhelper.js';
 
 var App = React.createClass({
@@ -40,12 +39,41 @@ var App = React.createClass({
     )
   },
   renderColumnWithArticles: function (articles) {
-
     return articles.map((item, index) =>
       <section className="column">
         <Article key={`row_${index}`} details={item} />
       </section>
     )
+  },
+  renderBody: function(articleChunks) {
+    if (articleChunks.length < 3) {
+      return (
+        <div>
+          { articleChunks[0].map((item, index) =>  this.renderArticle(item, index))}
+        </div>
+      );
+    } else {
+      return (
+        <div className="container">
+          <section className="column col-1">
+            {articleChunks[0].map((item, index) =>
+              this.renderArticle(item, index)
+            )}
+          </section>
+          <section className="column col-2">
+            {articleChunks[1].map((item, index) =>
+              this.renderArticle(item, index)
+            )}
+          </section>
+          <section className="column col-3">
+            {articleChunks[2].map((item, index) =>
+              this.renderArticle(item, index)
+            )}
+          </section>
+        </div>
+      );
+    }
+
   },
   render: function () {
     var sources = getListOfUrls();
@@ -67,23 +95,7 @@ var App = React.createClass({
           <h2>RSS <span>Reader</span></h2>
         </header>
 
-        <div className="container">
-          <section className="column col-1">
-            {articleChunks[0].map((item, index) =>
-              this.renderArticle(item, index)
-            )}
-          </section>
-          <section className="column col-2">
-            {articleChunks[1].map((item, index) =>
-              this.renderArticle(item, index)
-            )}
-          </section>
-          <section className="column col-3">
-            {articleChunks[2].map((item, index) =>
-              this.renderArticle(item, index)
-            )}
-          </section>
-        </div>
+        { this.renderBody(articleChunks) }
 
         <section id="footer"></section>
 

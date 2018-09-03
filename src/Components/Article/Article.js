@@ -1,6 +1,5 @@
 import React from 'react';
 import './articles.css';
-//import classNames from 'classnames';
 var classNames = require('classnames');
 
 
@@ -17,19 +16,6 @@ var Article = React.createClass({
       styles = {
         backgroundColor: details.color
       };
-    var classes = [
-      'article',
-
-    ];
-
-    var npmClassnames = classNames('btn', this.props.className, {
-      'btn-pressed': this.state.isPressed,
-      'btn-over': !this.state.isPressed && this.state.isHovered
-    });
-
-    var classesConcat = 'article';
-    if (this.state.expanded)
-      classesConcat += ' article--expanded';
 
     var classArray = [
       'article',

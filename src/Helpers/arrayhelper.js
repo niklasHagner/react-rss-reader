@@ -23,7 +23,6 @@ function chunkify(a, n, balanced) {
     }
 
     else {
-
         n--;
         size = Math.floor(len / n);
         if (len % size === 0)
@@ -32,7 +31,6 @@ function chunkify(a, n, balanced) {
             out.push(a.slice(i, i += size));
         }
         out.push(a.slice(size * n));
-
     }
 
     return out;
