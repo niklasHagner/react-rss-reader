@@ -7,7 +7,6 @@ import { getTestArticles } from '../Helpers/feeder.js';
 class ArticleList extends React.Component {
   constructor () {
     super();
-    console.log("ArticleList", this.state);
     this.state = {
         articles: [],
         articleChunks: []

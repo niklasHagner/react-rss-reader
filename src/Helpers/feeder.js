@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import globalConfig from '../config.js';
+import config from '../config.js';
 
 function setUrl(rssUrl) {
   rssUrl = encodeURIComponent(rssUrl);
@@ -34,7 +34,8 @@ function getListOfUrls() {
 var getFeeds = function (reactRoot) {
   var storedFeeds = localStorage.getItem('react-rss-feeds');
 
-  if (useStoredData(reactRoot, storedFeeds)) return;
+  if (useStoredData(reactRoot, storedFeeds))
+    return;
 
   var urls = getListOfUrls();
   var promiseArr = [];
@@ -67,9 +68,20 @@ function useStoredData(reactRoot, storedFeeds) {
   if (!storedFeeds) return false;
 
   var storedReactResult = JSON.parse(storedFeeds);
-  if (((new Date().getTime()) - new Date(storedReactResult.saveDate).getTime()) < globalConfig.cacheTime) {
+  if (!storedReactResult) return false;
+
+  if (config.cache && config.cache.mode === "forever") {
     reactRoot.setState(storedReactResult);
     return true;
+  }
+  else if (storedReactResult
+    && config.cache
+    && config.cache.time
+    && new Date().getTime() - new Date(storedReactResult.saveDate).getTime() < config.cache.time
+  )
+  {
+      reactRoot.setState(storedReactResult);
+      return true;
   }
   return false;
 }

@@ -1,8 +1,9 @@
-function getGlobalConfig() {
-  const ONE_HOUR = 60 * 60 * 1000;
-  return {
-    cacheTime: ONE_HOUR
-  }
+
+
+const ONE_HOUR = 60 * 60 * 1000;
+
+const config = {
+    cache: { mode: "forever", time: ONE_HOUR*999 }
 }
 
-export default getGlobalConfig;
+export default config;

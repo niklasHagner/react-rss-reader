@@ -29,12 +29,12 @@ class Menu extends React.Component {
                 </nav>
                 <nav className="menu__item"> ↕ Sort</nav>
                 <div className="menu-item-group">
-                    <nav className={listBtnClassNames} onClick={this.changeCssFile}> 
-                        <span role="img" aria-label="layout: list">📋</span> 
+                    <nav className={listBtnClassNames} onClick={this.changeCssFile}>
+                        <span role="img" aria-label="layout: list">📋</span>
                         List
                     </nav>
-                    <nav className={gridBtnClassNames} onClick={this.changeCssFile}> 
-                        <span role="img" aria-label="layout: grid">📦</span> 
+                    <nav className={gridBtnClassNames} onClick={this.changeCssFile}>
+                        <span role="img" aria-label="layout: grid">📦</span>
                         Grid
                     </nav>
                 </div>

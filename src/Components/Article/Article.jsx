@@ -28,7 +28,6 @@ class Article extends React.Component {
 
     return (
       <article className={classArray.join(' ')} onClick={this.toggleExpand}>
-
         <section className="article__header">
           <h3 className="article__category" style={styles}>{details.category}</h3>
           <h2 className="article__title">{details.title}</h2>
@@ -37,7 +36,6 @@ class Article extends React.Component {
         <section className="article__description">
           <p dangerouslySetInnerHTML={{ __html: details.description }}></p>
         </section>
-
       </article>
     )
   }
