@@ -53,3 +53,8 @@ ul, menu, nav {
     transform: rotate(360deg);
   }
 }
+
+.error-container {
+  background-color: pink;
+  color: maroon;
+}

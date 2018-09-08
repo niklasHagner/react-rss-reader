@@ -1,19 +1,16 @@
 import React from 'react';
-// import { getFeeds, getTestData } from '../../Helpers/feeder.js';
-// import $ from 'jquery';
-// import { toArr, toKeys } from '../../Helpers/keymap.js';
 
-var FeedSource = React.createClass({
-    getInitialState() {
-        return { sources: null };
-    },
-    componentDidMount: function () {
-    },
-    sort: function (e) {
+class FeedSource extends React.Component{
+    constructor() {
+        super();
+        this.state = { expanded: false }
+    }
+
+    sort(e) {
         console.log(this.state.expanded);
-        //this.setState({ expanded: !this.state.expanded });
-    },
-    render: function (item, key) {
+    }
+
+    render(item, key) {
         var source = this.props.source;
         var styles = {
             backgroundColor: source.color,
@@ -25,6 +22,6 @@ var FeedSource = React.createClass({
             </div>
         )
     }
-});
+}
 
 export default FeedSource;

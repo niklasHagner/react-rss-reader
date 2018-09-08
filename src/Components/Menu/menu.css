@@ -13,7 +13,11 @@
   font-family: Helvetica, sans-serif;
   display: inline-block;
   line-height: 1;
-  border-radius: 50px;
+  border-radius: 25px;
+}
+
+.menu__item--active {
+  color: gold;
 }
 
 .menu__item:hover {
@@ -21,7 +25,25 @@
   background-color: rgba(200, 100, 200, 0.5);
 }
 
-;
+.menu-item-group {
+  display: inline-block;
+  border-radius: 25px;
+}
+.menu-item-group .menu__item {
+    display: inline-block;
+    border-radius: 0;
+}
+.menu-item-group .menu__item--radio {
+  margin: 0;
+}
+.menu-item-group .menu__item--radio:first-of-type {
+  border-right: solid 2px #555;
+  margin-left: 5px;
+}
+.menu-item-group .menu__item--radio:last-of-type {
+  margin-right: 5px;
+}
+
 .sources {
   z-index: 0;
   top: 0;

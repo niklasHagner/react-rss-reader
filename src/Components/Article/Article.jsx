@@ -1,17 +1,21 @@
 import React from 'react';
-import './articles.css';
-var classNames = require('classnames');
+import './article-list.css';
 
 
-var Article = React.createClass({
-  getInitialState() {
-    return { expanded: false };
-  },
-  toggleExpand: function (e) {
+class Article extends React.Component {
+  constructor () {
+    super();
+    this.state = {
+        expanded: false
+    }
+  }
+
+  toggleExpand(e) {
     console.log(this.state.expanded);
     this.setState({ expanded: !this.state.expanded });
-  },
-  render: function () {
+  }
+
+  render() {
     var details = this.props.details,
       styles = {
         backgroundColor: details.color
@@ -36,10 +40,7 @@ var Article = React.createClass({
 
       </article>
     )
-  },
-  componentDidMount: function () {
-  },
-
-});
+  }
+};
 
 export default Article;
