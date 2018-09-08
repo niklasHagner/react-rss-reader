@@ -10,7 +10,7 @@ import Footer from './Components/Footer/Footer.jsx';
 import FeedSource from './Components/Article/Sources.jsx';
 import ArticleList from './Components/ArticleList.jsx';
 
-import { getFeeds, getListOfUrls } from './Helpers/feeder.js';
+import { getListOfUrls } from './Helpers/feeder.js';
 import loadStyleSheet from './Helpers/loadStyleSheet.js';
 
 class App extends React.Component {
@@ -26,7 +26,6 @@ class App extends React.Component {
 
   componentDidMount() {
     this.setLayout();
-    getFeeds(this);
   }
 
   sort(sortMethod) {

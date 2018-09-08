@@ -2,7 +2,7 @@ import React from 'react';
 import Error from '../Components/Error.jsx';
 import Article from '../Components/Article/Article.jsx';
 import { chunkify } from '../Helpers/arrayhelper.js';
-import { getTestArticles } from '../Helpers/feeder.js';
+import { getFeedsAsync } from '../Helpers/feeder.js';
 
 class ArticleList extends React.Component {
   constructor () {
@@ -14,13 +14,20 @@ class ArticleList extends React.Component {
   }
 
   componentDidMount() {
-    const articles = getTestArticles();
-    this.setState({ articles: articles })
-    if (articles.length > 0) {
-      const articleChunks = chunkify(articles, 3, true);
-      this.setState({articleChunks: articleChunks});
-    }
-    console.log("ArticleList mounted", this.state);
+    getFeedsAsync()
+    .then((response) => {
+      const articles = response.articles;
+      this.setState({ articles: articles })
+      if (articles.length > 0) {
+        const articleChunks = chunkify(articles, 3, true);
+        this.setState({articleChunks: articleChunks});
+      }
+      console.log("ArticleList fetched feeds", this.state);
+    })
+    .catch((error) => {
+      console.error(error);
+    })
+
   }
 
   renderColumnWithArticles(articles) {
