@@ -52,6 +52,7 @@ var getFeeds = function (reactRoot) {
             return b.pubDate - a.pubDate;
         });
         var reactResult = { articles: aggregate };
+        reactResult.saveDate = new Date();
         localStorage.setItem('react-rss-feeds', JSON.stringify(reactResult));
         reactRoot.setState(reactResult);
     }).catch(function (e) {
@@ -65,7 +66,7 @@ function useStoredData(reactRoot, storedFeeds) {
 
     var storedReactResult = JSON.parse(storedFeeds);
     var ONE_HOUR = 60 * 60 * 1000;
-    if (((new Date()) - storedReactResult.saveDate) < ONE_HOUR) {
+    if (((new Date().getTime()) - new Date(storedReactResult.saveDate).getTime()) < ONE_HOUR) {
         reactRoot.setState(storedReactResult);
         return true;
     }
