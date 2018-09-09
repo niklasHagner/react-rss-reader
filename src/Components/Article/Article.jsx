@@ -1,4 +1,5 @@
 import React from 'react';
+import { events, triggerEvent } from '../../Helpers/events.js';
 import './article-list.css';
 
 
@@ -6,35 +7,49 @@ class Article extends React.Component {
   constructor () {
     super();
     this.state = {
-        expanded: false
+        article: null,
+        expanded: false,
+        selected: false
     }
   }
 
-  toggleExpand(e) {
-    console.log(this.state.expanded);
-    this.setState({ expanded: !this.state.expanded });
+  componentDidMount() {
+    this.setState({ article: this.props.article });
+  }
+
+  clickArticle(e) {
+    if (this.props.layout === "list") {
+      this.setState({ expanded: !this.state.expanded });
+    } else {
+      this.setState({ selected: !this.state.selected });
+      triggerEvent(events.selectArticle.name, this.props.article);
+    }
   }
 
   render() {
-    var details = this.props.details,
-      styles = {
-        backgroundColor: details.color
-      };
+    // console.log("render article");
+    var article = this.props.article;
 
+    if (!article) return null;
+
+    var styles = {
+      backgroundColor: article.color
+    };
     var classArray = [
       'article',
       this.state.expanded ? 'article--expanded' : '',
+      this.state.selected ? 'article--selected' : ''
     ];
 
     return (
-      <article className={classArray.join(' ')} onClick={this.toggleExpand}>
+      <article className={classArray.join(' ')} onClick={this.clickArticle.bind(this)}>
         <section className="article__header">
-          <h3 className="article__category" style={styles}>{details.category}</h3>
-          <h2 className="article__title">{details.title}</h2>
+          <h3 className="article__category" style={styles}>{article.category}</h3>
+          <h2 className="article__title">{article.title}</h2>
         </section>
 
         <section className="article__description">
-          <p dangerouslySetInnerHTML={{ __html: details.description }}></p>
+          <p dangerouslySetInnerHTML={{ __html: article.description }}></p>
         </section>
       </article>
     )

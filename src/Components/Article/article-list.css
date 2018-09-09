@@ -38,6 +38,7 @@
 }
 
 
+
 /* Article (Component) */
 
 .article {
@@ -58,6 +59,7 @@
 .article__header {
   font-size: 12px;
   text-align: left;
+  cursor: pointer;
 }
 .article__title {
   margin: 0 0 10px;
@@ -119,7 +121,7 @@
 }
 
 .article__description pre, .article__description code {
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 .article--expanded .article__description {
@@ -138,3 +140,11 @@
   text-align: left;
 }
 
+.article--selected {
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+
+.icon--delete-feed { cursor: pointer; }
+/*hide crap from feeds */
+.feedflare { display: none; }

@@ -3,4 +3,4 @@
 
 ### How to use
 * `npm start` in root to launch localhost:3000
-* change the urls in `feeder.js` to edit the feeds
+* change the urls in `fetchFeeds.js` to edit the feeds

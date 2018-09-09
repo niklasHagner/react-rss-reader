@@ -2,6 +2,7 @@
   position: absolute;
   top: 21px;
   right: 15px;
+  color: white;
 }
 
 .menu__item {
@@ -17,7 +18,7 @@
 }
 
 .menu__item--active {
-  color: gold;
+  border: solid 2px purple;
 }
 
 .menu__item:hover {

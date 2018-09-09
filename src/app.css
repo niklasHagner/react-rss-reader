@@ -11,7 +11,6 @@ ul, menu, nav {
 }
 
 .app-logo {
-  animation: app-logo-spin infinite 60s linear;
   height: 60px;
   position: absolute;
   top: 5px;
@@ -19,42 +18,57 @@ ul, menu, nav {
 }
 
 .app-header {
-  background-color: rgba(119, 136, 153, 0.5);
-  color: white;
+  background-color: rgb(231, 236, 239);
   height: 50px;
   margin-top: -3px;
 }
 
-
-/*.app-header * {
-  padding: 10px 30px;
-}*/
-
 .app-header h2 {
   display: inline-block;
   position: absolute;
-  top: 0;
+  top: 13px;
   left: 90px;
-  font-family: 'Bitter', sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
   font-size: 30px;
-  text-shadow: 1px 0 1px #172744;
   margin-top: 6px;
-}
-
-.app-intro {
-  font-size: large;
-}
-
-@keyframes app-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  color: #6f838b;
+  border-bottom: solid 3px #6f838b;
+  line-height: 24px;
 }
 
 .error-container {
   background-color: pink;
   color: maroon;
 }
+
+.sources-list {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  padding: 10px;
+  width: 50vw;
+  height: 80vh;
+  color: #555;
+  background-color: #ddd;
+  box-shadow: 1px 0px 10px #555;
+  overflow: hidden;
+  text-align: left;
+  font-size: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  z-index: 1;
+}
+
+.sources-list input[type=text] {
+  font-family: monospace;
+  width: 80%;
+  margin: 2px 5px;
+}
+
+.source-color-icon {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+}
+
+.hidden { display: none; }
