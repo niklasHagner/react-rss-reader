@@ -23,6 +23,11 @@ export default class extends Component {
         <section className="article__description">
           <p dangerouslySetInnerHTML={{ __html: article.description }}></p>
         </section>
+
+        <footer className="article__meta">
+          <a href={article.link}>original article</a>
+        </footer>
+
       </article>
     )
   }
