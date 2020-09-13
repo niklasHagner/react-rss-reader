@@ -1,10 +1,9 @@
 import React from 'react';
 import Error from '../Components/Error.jsx';
 import Article from '../Components/Article/Article.jsx';
-import { chunkify } from '../Helpers/arrayhelper.js';
+import { chunkify, shuffle } from '../Helpers/arrayhelper.js';
 import { getFeedsAsync } from '../Helpers/fetchFeeds.js';
 import { events, triggerEvent } from '../Helpers/events.js';
-
 
 class ArticleList extends React.Component {
   constructor () {
@@ -23,7 +22,8 @@ class ArticleList extends React.Component {
 
     getFeedsAsync()
     .then((response) => {
-      const articles = response.articles;
+      let articles = response.articles;
+      articles = shuffle(articles);
       this.setState({ articles: articles });
       console.log("ArticleList fetched feeds", this.state);
 
