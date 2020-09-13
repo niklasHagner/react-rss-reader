@@ -7,14 +7,16 @@ class FeedSource extends React.Component{
     }
 
     sort(e) {
-        console.log(this.state.expanded);
+        if (this && this.state) {
+            console.log(this.state.expanded);
+        }
     }
 
     render(item, key) {
         var source = this.props.source;
         var styles = {
             backgroundColor: source.color,
-            width: this.props.widthPercentage + '%'
+            width: '20px'
         };
         return (
             <div className={'feed-source'} onClick={this.sort} style={styles}>
