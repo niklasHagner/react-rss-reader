@@ -34,11 +34,9 @@ class Menu extends React.Component {
         return (
             <div className="menu">
                 <nav className={editBtnClassNames} onClick={this.toggleEditSources.bind(this) }>
-                    <span role="img" aria-label="edit feeds">✍️</span>
-                    Edit
+                    Edit feeds
                 </nav>
-                <nav className="menu__item"> ↕ Sort</nav>
-                <div className="menu-item-group">
+                {/* <div className="menu-item-group">
                     <nav className={listBtnClassNames} onClick={this.changeLayout.bind(this) }>
                         <span role="img" aria-label="layout: list">📋</span>
                         List
@@ -47,7 +45,7 @@ class Menu extends React.Component {
                         <span role="img" aria-label="layout: grid">📦</span>
                         Grid
                     </nav>
-                </div>
+                </div> */}
             </div>
         )
     }

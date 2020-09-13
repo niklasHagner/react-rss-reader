@@ -52,7 +52,7 @@ ul, menu, nav {
   color: #555;
   background-color: #ddd;
   box-shadow: 1px 0px 10px #555;
-  overflow: hidden;
+  overflow-x: scroll;
   text-align: left;
   font-size: 10px;
   font-family: Arial, Helvetica, sans-serif;

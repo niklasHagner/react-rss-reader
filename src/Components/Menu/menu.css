@@ -7,8 +7,6 @@
 
 .menu__item {
   background-color: rgba(51, 50, 103, 0.5);
-  min-width: 5px;
-  max-width: 100px;
   margin: -2px 5px;
   padding: 4px 13px;
   font-family: Helvetica, sans-serif;

@@ -142,8 +142,20 @@
 
 .article--selected {
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+  background-color: black;
+  color: white;
 }
 
+.article--selected .article__header,
+.article--selected .article__description,
+.article--selected .article__title {
+  background-color: black;
+  color: white;
+}
+
+.article--selected .article__header h3 {
+  color: white;
+}
 
 .icon--delete-feed { cursor: pointer; }
 /*hide crap from feeds */
