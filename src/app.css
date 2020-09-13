@@ -23,18 +23,23 @@ ul, menu, nav {
   margin-top: -3px;
 }
 
+.app-header img {
+  width: 50px;
+  position: absolute;
+  left: 33px;
+  top: 0;
+}
+
 .app-header h2 {
   display: inline-block;
   position: absolute;
-  top: 13px;
+  top: 0;
   left: 90px;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: monospace;
   font-weight: bold;
   font-size: 30px;
   margin-top: 6px;
-  color: #6f838b;
-  border-bottom: solid 3px #6f838b;
-  line-height: 24px;
+  color: #f26523;
 }
 
 .error-container {

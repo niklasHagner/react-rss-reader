@@ -31,7 +31,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    document.addEventListener(events.selectArticle.name, this.selectArticle.bind(this));
+    document.addEventListener(events.selectArticle.name, this.articleWasSelected.bind(this));
     document.addEventListener(events.editMode.name, this.enableSourcesEditMode.bind(this));
 
     this.setState({ sources: getFeedUrls() });
@@ -50,18 +50,18 @@ class App extends React.Component {
       this.state.editMode ? "" : "hidden"
     ];
 
-    console.log("APP RENDER:", sourcesClassNames, "editMode", this.state.editMode);
+    // console.log("App render:", sourcesClassNames, "editMode", this.state.editMode);
 
     return (
       <div className="app">
         <header className="app-header">
           <Menu editMode={this.state.editMode} />
 
-          <div className="sources">
+          {/* <div className="sources">
             {sources.map((item, index) =>
               <FeedSource key={`source-${index}`} source={item} widthPercentage={widthPercentage} />
             )}
-          </div>
+          </div> */}
 
           <div className={sourcesClassNames.join(" ")}>
             {sources.map((item, index) =>
@@ -73,9 +73,8 @@ class App extends React.Component {
               </div>
             )}
           </div>
-
-          <img src={'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/emojione/151/newspaper_1f4f0.png'} className="app-logo" alt="logo" />
-          <h2>RSS <span>READER</span></h2>
+          <img src="https://www.iconfinder.com/data/icons/popular-services-brands/512/rss-512.png"></img>
+          <h2>Rss Reader</h2>
         </header>
 
         <ArticleList layout={ "list" } />
@@ -120,10 +119,15 @@ class App extends React.Component {
     }
   }
 
-  selectArticle(event) {
+  articleWasSelected(event) {
     const article = event.detail;
     console.log("received a message", article);
-    this.setState({selectedArticle: article});
+    // let articles = this.state.articles.map((a) => { a.selcted = false; return a; });
+    if (this.state.selectedArticle) {
+      console.log("before new article:", this.state.selectedArticle);
+      // this.state.selectedArticle.toggleSelected();
+    }
+    this.setState({selectedArticle: article}); //, articles: articles
   }
 
   enableSourcesEditMode(event) {

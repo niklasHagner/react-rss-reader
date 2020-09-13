@@ -6,22 +6,23 @@
 }
 
 .menu__item {
-  background-color: rgba(51, 50, 103, 0.5);
+  background-color: #f26523;
   margin: -2px 5px;
-  padding: 4px 13px;
+  padding: 8px 13px;
   font-family: Helvetica, sans-serif;
+  font-size: 12px;
   display: inline-block;
   line-height: 1;
   border-radius: 25px;
 }
 
 .menu__item--active {
-  border: solid 2px purple;
+  border: solid 2px orange;
 }
 
 .menu__item:hover {
   cursor: pointer;
-  background-color: rgba(200, 100, 200, 0.5);
+  background-color: orangered;
 }
 
 .menu-item-group {

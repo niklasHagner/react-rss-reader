@@ -13,7 +13,7 @@ class Menu extends React.Component {
     }
 
     render() {
-        console.log("MENU render", this.state);
+        // console.log("Menu render", this.state);
 
         const gridBtnClassNames = classNames({
             'menu__item': true,

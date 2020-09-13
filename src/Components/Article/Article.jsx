@@ -17,6 +17,14 @@ class Article extends React.Component {
     this.setState({ article: this.props.article });
   }
 
+  // componentDidUpdate() {
+  //   console.log("article did update")
+  // }
+
+  toggleSelected() {
+    this.setState({ selected: !this.state.selected });
+  }
+
   clickArticle(e) {
     if (this.props.layout === "list") {
       this.setState({ expanded: !this.state.expanded });
@@ -27,8 +35,10 @@ class Article extends React.Component {
   }
 
   render() {
-    // console.log("render article");
     var article = this.props.article;
+
+    if (this.state.selected)
+      console.log("selected article", article.title);
 
     if (!article) return null;
 
