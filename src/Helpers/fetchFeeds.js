@@ -17,7 +17,7 @@ var getFeedsAsync = function (reactRoot) {
       var promise = getSingleFeed(x.url, x.color);
       promiseArr.push(promise);
     });
-    Promise.all(promiseArr).map(p => p.catch(e => e)).then((values) => {
+    Promise.all(promiseArr).map(p => p.catch(e => {console.error(e);})).then((values) => {
       var feeds = values.map((feed) => {
         return feed.articles;
       });

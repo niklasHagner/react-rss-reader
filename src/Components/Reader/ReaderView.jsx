@@ -25,7 +25,7 @@ export default class extends Component {
         </section>
 
         <footer className="article__meta">
-          <a href={article.link}>original article</a>
+          <a target="_blank" href={article.link}>original article</a>
         </footer>
 
       </article>
