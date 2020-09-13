@@ -12,7 +12,7 @@ import ArticleList from './Components/ArticleList.jsx';
 import ReaderView from './Components/Reader/ReaderView.jsx';
 
 //helpers
-import { getListOfUrls } from './Helpers/fetchFeeds.js';
+import getFeedUrls from './Helpers/feedList.js';
 import loadStyleSheet from './Helpers/loadStyleSheet.js';
 import { events } from './Helpers/events.js';
 
@@ -34,7 +34,7 @@ class App extends React.Component {
     document.addEventListener(events.selectArticle.name, this.selectArticle.bind(this));
     document.addEventListener(events.editMode.name, this.enableSourcesEditMode.bind(this));
 
-    this.setState({ sources: getListOfUrls() });
+    this.setState({ sources: getFeedUrls() });
     this.setLayout();
   }
 
