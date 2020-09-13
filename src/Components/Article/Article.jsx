@@ -17,15 +17,15 @@ class Article extends React.Component {
     this.setState({ article: this.props.article });
   }
 
-  // componentDidUpdate() {
-  //   console.log("article did update")
-  // }
-
-  toggleSelected() {
-    this.setState({ selected: !this.state.selected });
+  componentDidUpdate() {
+    if (this.props 
+      && typeof(this.props.isSelected) === "boolean" 
+      && this.props.isSelected != this.state.selected) {
+      this.setState({ selected: this.props.isSelected });
+    } 
   }
 
-  clickArticle(e) {
+  clickArticle() {
     if (this.props.layout === "list") {
       this.setState({ expanded: !this.state.expanded });
     } else {

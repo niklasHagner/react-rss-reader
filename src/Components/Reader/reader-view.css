@@ -1,13 +1,3 @@
-.reading-list {
-    width: 28%;
-    display: inline-block;
-    float: left;
-    padding: 10px;
-    background-color: white;
-    height: 100vh;
-    overflow-y: auto;
-}
-
 .reader-view {
     margin-top: 10px;
     padding: 10px 0;
@@ -39,26 +29,6 @@
 }
 
 
-.reading-list::-webkit-scrollbar {
-    width: 9px;
-    height: 1px;
-}
-
-.reading-list::-webkit-scrollbar-corner {
-    border-radius: 50px;
-}
-
-.reading-list::-webkit-scrollbar-thumb {
-    border: solid 1px #ddd;
-    background-color: #999;
-}
-
-.reading-list::-webkit-scrollbar-track {
-    border: none;
-    background: #ccc;
-}
-
-
 .reader-view .article__description {
     color: #666;
     line-height: 1.5rem;
@@ -70,7 +40,3 @@
     overflow: hidden;
     max-height: 100%;
 }
-
-
-.article { margin: 0; padding: 0 10px 20px 10px; box-shadow: none; }
-.article { margin: 0; padding: 0 10px 20px 10px; box-shadow: none; }

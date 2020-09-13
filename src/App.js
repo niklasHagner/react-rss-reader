@@ -77,7 +77,7 @@ class App extends React.Component {
           <h2>Rss Reader</h2>
         </header>
 
-        <ArticleList layout={ "list" } />
+        <ArticleList layout={ "list" } selectedArticle={this.state.selectedArticle} />
 
         { 4 > 2 ? <ReaderView article={ this.state.selectedArticle } /> : null }
 

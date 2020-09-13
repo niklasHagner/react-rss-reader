@@ -47,8 +47,8 @@
   border-radius: 2px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  -webkit-transition: .3s ease;
-  transition: all .3s ease;
+  /* -webkit-transition: .3s ease;
+  transition: all .3s ease; */
 }
 
 .article__description {
@@ -74,11 +74,7 @@
 }
 
 .article:hover {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.article:active {
-  box-shadow: none;
+  background-color: whitesmoke;
 }
 
 .article--expanded .article__header {
@@ -140,16 +136,18 @@
   text-align: left;
 }
 
-.article--selected {
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
-  background-color: black;
+.article.article--selected {
+  background-color: #222;
   color: white;
+}
+
+.article--selected a {
+  color: lightblue;
 }
 
 .article--selected .article__header,
 .article--selected .article__description,
 .article--selected .article__title {
-  background-color: black;
   color: white;
 }
 
@@ -160,3 +158,41 @@
 .icon--delete-feed { cursor: pointer; }
 /*hide crap from feeds */
 .feedflare { display: none; }
+
+
+.reading-list {
+  width: 28%;
+  float: left;
+  background-color: white;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.reading-list::-webkit-scrollbar {
+  width: 9px;
+  height: 1px;
+}
+
+.reading-list::-webkit-scrollbar-corner {
+  border-radius: 50px;
+}
+
+.reading-list::-webkit-scrollbar-thumb {
+  border: solid 1px #ddd;
+  background-color: #999;
+}
+
+.reading-list::-webkit-scrollbar-track {
+  border: none;
+  background: #ccc;
+}
+
+.reading-list .article { 
+  margin: 0 0 7px 0; 
+  padding: 0 10px 10px 10px;
+  box-shadow: none; 
+}
+
+.reading-list .article__description {
+    display: none;
+}

@@ -17,7 +17,7 @@ class ArticleList extends React.Component {
   }
 
   componentDidMount() {
-    // console.log("Article List mount", this.props);
+
     const layoutName = this.props.layout;
 
     getFeedsAsync()
@@ -46,7 +46,7 @@ class ArticleList extends React.Component {
   }
 
   componentDidUpdate() {
-    // console.log("Article List update", this.props);
+    console.log("Article List update:", this.props);
     const layoutName = this.props.layout;
 
     let articleChunks;
@@ -78,7 +78,7 @@ class ArticleList extends React.Component {
     return (
       <section className="reading-list">
         {
-          articles.map((item, index) => <Article key={index} article={item} />)
+          articles.map((item, index) => this.renderArticle(item, index))
         }
       </section>
     )
@@ -108,8 +108,13 @@ class ArticleList extends React.Component {
 
 
   renderArticle(item, key) {
+    let isSelected = false;
+    if (this.props.selectedArticle && item.link === this.props.selectedArticle.link) {
+      console.log(item.link === this.props.selectedArticle.link, item.link, this.props.selectedArticle.link);
+      isSelected = item.link === this.props.selectedArticle.link;
+    }
     return (
-      <Article key={`row_${key}`} article={item} />
+      <Article key={`row_${key}`} article={item} isSelected={isSelected} />
     )
   }
 }
