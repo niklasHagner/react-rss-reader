@@ -18,11 +18,11 @@ class Article extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.props 
-      && typeof(this.props.isSelected) === "boolean" 
-      && this.props.isSelected != this.state.selected) {
+    if (this.props
+      && typeof(this.props.isSelected) === "boolean"
+      && this.props.isSelected !== this.state.selected) {
       this.setState({ selected: this.props.isSelected });
-    } 
+    }
   }
 
   clickArticle() {
