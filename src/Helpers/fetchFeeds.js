@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import config from '../config.js';
 import getFeedUrls from './feedList.js';
 
@@ -17,7 +16,7 @@ var getFeedsAsync = function (reactRoot) {
       var promise = getSingleFeed(x.url, x.color);
       promiseArr.push(promise);
     });
-    Promise.all(promiseArr).map(p => p.catch(e => {console.error(e);})).then((values) => {
+    Promise.all(promiseArr).then((values) => {
       var feeds = values.map((feed) => {
         return feed.articles;
       });
@@ -66,14 +65,13 @@ function getCachedData() {
 
 function getSingleFeed(url, color) {
   return new Promise(function (fulfill, reject) {
-    $.get(url, (result) => {
-      if (result.error) {
-        console.error("Feed error");
-        return;
-      }
-      var meta = result.feed;
+
+    fetch(url)
+    .then((data) => data.json())
+    .then((body) => {
+      var meta = body.feed;
       meta.title = meta.title.split(" ").splice(0, 3).join(" ");
-      var articles = result.items;
+      var articles = body.items;
       articles = articles.map((x) => {
         x.color = color;
         x.category = meta.title;
@@ -85,6 +83,9 @@ function getSingleFeed(url, color) {
         articles: articles
       };
       fulfill(resultObject);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
     });
   });
 };
