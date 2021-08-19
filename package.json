@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "classnames": "^2.2.6",
-    "jquery": "^3.5.1",
-    "react": "15.4.2",
-    "react-dom": "15.4.2",
-    "react-scripts": "^3.4.3"
+    "classnames": "^2.3.1",
+    "jquery": "^3.6.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-scripts": "^4.0.3"
   },
   "devDependencies": {
-    "eslint-plugin-react": "^6.10.0"
+    "eslint-plugin-react": "^7.24.0"
   },
   "scripts": {
     "start": "react-scripts start",
