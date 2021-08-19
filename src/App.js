@@ -73,7 +73,7 @@ class App extends React.Component {
               </div>
             )}
           </div>
-          <img src="https://www.iconfinder.com/data/icons/popular-services-brands/512/rss-512.png"></img>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Rss-feed.svg/1200px-Rss-feed.svg.png"></img>
           <h2>Rss Reader</h2>
         </header>
 
