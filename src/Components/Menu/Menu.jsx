@@ -33,9 +33,9 @@ class Menu extends React.Component {
 
         return (
             <div className="menu">
-                <nav className={editBtnClassNames} onClick={this.toggleEditSources.bind(this) }>
+                {/* <nav className={editBtnClassNames} onClick={this.toggleEditSources.bind(this) }>
                     Edit feeds
-                </nav>
+                </nav> */}
                 {/* <div className="menu-item-group">
                     <nav className={listBtnClassNames} onClick={this.changeLayout.bind(this) }>
                         <span role="img" aria-label="layout: list">📋</span>
