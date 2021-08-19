@@ -54,7 +54,7 @@ class Article extends React.Component {
     return (
       <article className={classArray.join(' ')} onClick={this.clickArticle.bind(this)}>
         <section className="article__header">
-          <h3 className="article__category" style={styles}>{article.category}</h3>
+          <h3 className="article__category"><icon style={styles}></icon>{article.category}</h3>
           <h2 className="article__title">{article.title}</h2>
         </section>
 

@@ -17,7 +17,7 @@ export default class extends Component {
       <article>
         <h1>{article.title}</h1>
         <section className="article__header">
-          <h3 className="article__category" style={article.styles}>{article.category}</h3>
+          <h3 className="article__category"><icon style={article.styles}></icon>{article.category}</h3>
         </section>
 
         <section className="article__description">
