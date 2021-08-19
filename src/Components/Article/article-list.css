@@ -136,13 +136,13 @@
   text-align: left;
 }
 
-.article.article--selected {
-  background-color: #222;
-  color: white;
-}
-
 .article--selected a {
   color: lightblue;
+}
+
+.article--selected .article__header {
+  border: solid 2px black;
+  background-color: #f26523;
 }
 
 .article--selected .article__header,

@@ -24,18 +24,18 @@ ul, menu, nav {
 }
 
 .app-header img {
-  width: 50px;
+  width: 30px;
   position: absolute;
-  left: 33px;
-  top: 0;
+  left: 10px;
+  top: 10px;
 }
 
 .app-header h2 {
   display: inline-block;
   position: absolute;
   top: 0;
-  left: 90px;
-  font-family: monospace;
+  left: 50%;
+  font-family: Helvetica, sans-serif;
   font-weight: bold;
   font-size: 30px;
   margin-top: 6px;
