@@ -8,3 +8,8 @@
 .DS_Store
 .env
 npm-debug.log*
+.vscode
+
+
+# apikey - you gotta add this file yourself. See more in README 
+getApiKey.js
