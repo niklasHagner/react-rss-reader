@@ -1,5 +1,6 @@
 import config from '../config.js';
 import getFeedUrls from './feedList.js';
+// var rssToJson = require('rss-to-json'); //Belongs to solutionAttempt2
 
 var getFeedsAsync = function (reactRoot) {
 
@@ -66,28 +67,43 @@ function getCachedData() {
 function getSingleFeed(url, color) {
   return new Promise(function (fulfill, reject) {
 
+    /* //Belongs to solutionAttempt2 */
+    // rssToJson.load(url).then((rss) => {
+    //   let resultObject = getProcessedResultObj(body);
+    //   fulfill(resultObject);
+    // });
+
+    /* solution1 */
     fetch(url)
     .then((data) => data.json())
     .then((body) => {
-      var meta = body.feed;
-      meta.title = meta.title.split(" ").splice(0, 3).join(" ");
-      var articles = body.items;
-      articles = articles.map((x) => {
-        x.color = color;
-        x.category = meta.title;
-        x.date = x.pubDate;
-        x.thumbNail = 'http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/sign-check-icon.png';
-        return x;
-      }).filter((x) => { return x.title.indexOf("sponsor") < 0; })
-      var resultObject = {
-        articles: articles
-      };
+      let resultObject = getProcessedResultObj(body);
       fulfill(resultObject);
     })
     .catch((error) => {
       console.error('Error:', error);
     });
+
+    
   });
+
+  function getProcessedResultObj(body) {
+    let meta = body.feed;
+    let niceTitle = meta.title.split(" ").splice(0, 3).join(" ");
+    let articles = body.items.map((x) => {
+      x.color = color;
+      x.category = niceTitle;
+      x.date = x.pubDate;
+      x.thumbNail = 'http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/sign-check-icon.png';
+      return x;
+    })
+    .filter((x) => { return x.title.indexOf("sponsor") < 0; })
+   
+    var resultObject = {
+      articles: articles
+    };
+    return resultObject;
+  }
 };
 
 var getFakeApiData = function () {
